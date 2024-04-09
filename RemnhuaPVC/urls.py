@@ -16,7 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from my_app.views import UserView,RoleView
+from RemnhuaPVC.consumers import ChatConsumer
+from django.urls import re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('user/', UserView.as_view(), name='user'),
+    path('roles/', RoleView.as_view(), name='role'),
+    path('', )
 ]
+
+websocket_urlpatterns = [
+    re_path(r'ws/chat/(?P<room_name>[\w-]+)/', ChatConsumer.as_asgi()),
+]
+
