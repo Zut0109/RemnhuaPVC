@@ -18,7 +18,7 @@ class User(models.Model):
 class Item(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=99)
+    price = models.DecimalField(max_digits=12, decimal_places=2)
     size = models.CharField(max_length=12)
     color = models.CharField(max_length=12)
     description = models.CharField(max_length=100)

@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from my_app.views import UserView,RoleView,TestReactView
+from my_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', UserView.as_view(), name='user'),
     path('roles/', RoleView.as_view(), name='role'),
     path('wel/', TestReactView.as_view(), name="something"),
+    path('items/', ItemListView.as_view(), name="items")
 ]
 
