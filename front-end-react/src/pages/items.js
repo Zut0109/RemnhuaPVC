@@ -1,78 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import ColorPicker from "../components/ColorPicker";
+import ItemList from "../components/ItemList";
 class Item extends React.Component {
-	state = {
-		details: [],
-		name: "",
-		price: "",
-		size: "",
-		color: "",
-		description: ""
-	};
-
-	componentDidMount() {
-		let data;
-
-		axios
-			.get("http://localhost:8000/item/")
-			.then((res) => {
-				data = res.data;
-				this.setState({
-					details: data,
-				});
-			})
-			.catch((err) => {});
-	}
-
-	renderSwitch = (param) => {
-		switch (param + 1) {
-			case 1:
-				return "primary ";
-			case 2:
-				return "secondary";
-			case 3:
-				return "success";
-			case 4:
-				return "danger";
-			case 5:
-				return "warning";
-			case 6:
-				return "info";
-			default:
-				return "yellow";
-		}
-	};
-
-	handleInput = (e) => {
-		this.setState({
-			[e.target.name]: e.target.value,
-		});
-	};
-
-	handleSubmit = (e) => {
-		e.preventDefault();
-
-		axios
-			.post("http://localhost:8000/item/", {
-				name: this.state.name,
-				price: this.state.price,
-				size: this.state.size,
-                color: this.state.color,
-                description: this.state.description,
-			})
-			.then((res) => {
-				this.setState({
-					name: "",
-					price: "",
-					size: "",
-                    color: "",
-                    description: "",
-				});
-			})
-			.catch((err) => {});
-	};
-
 	render() {
 		return (
 			<form className="mx-10 mb-10">
@@ -102,45 +33,45 @@ class Item extends React.Component {
 									</div>
 								</div>
 							</div>
-							<div className="col-span-full">
-								<label htmlFor="photo" className="block text-sm font-medium leading-6 text-gray-900">
-									Photo
-								</label>
-								<div className="mt-2 flex items-center gap-x-3">
-									<UserCircleIcon className="h-12 w-12 text-gray-300" aria-hidden="true"/>
-									<button
-										type="button"
-										className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-									>
-										Change
-									</button>
-								</div>
-							</div>
+							{/*<div className="col-span-full">*/}
+							{/*	<label htmlFor="photo" className="block text-sm font-medium leading-6 text-gray-900">*/}
+							{/*		Photo*/}
+							{/*	</label>*/}
+							{/*	<div className="mt-2 flex items-center gap-x-3">*/}
+							{/*		<UserCircleIcon className="h-12 w-12 text-gray-300" aria-hidden="true"/>*/}
+							{/*		<button*/}
+							{/*			type="button"*/}
+							{/*			className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"*/}
+							{/*		>*/}
+							{/*			Change*/}
+							{/*		</button>*/}
+							{/*	</div>*/}
+							{/*</div>*/}
 
-							<div className="col-span-full">
-								<label htmlFor="cover-photo"
-									   className="block text-sm font-medium leading-6 text-gray-900">
-									Cover photo
-								</label>
-								<div
-									className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-									<div className="text-center">
-										<PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true"/>
-										<div className="mt-4 flex text-sm leading-6 text-gray-600">
-											<label
-												htmlFor="file-upload"
-												className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-											>
-												<span>Upload a file</span>
-												<input id="file-upload" name="file-upload" type="file"
-													   className="sr-only"/>
-											</label>
-											<p className="pl-1">or drag and drop</p>
-										</div>
-										<p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-									</div>
-								</div>
-							</div>
+							{/*<div className="col-span-full">*/}
+							{/*	<label htmlFor="cover-photo"*/}
+							{/*		   className="block text-sm font-medium leading-6 text-gray-900">*/}
+							{/*		Cover photo*/}
+							{/*	</label>*/}
+							{/*	<div*/}
+							{/*		className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">*/}
+							{/*		<div className="text-center">*/}
+							{/*			<PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true"/>*/}
+							{/*			<div className="mt-4 flex text-sm leading-6 text-gray-600">*/}
+							{/*				<label*/}
+							{/*					htmlFor="file-upload"*/}
+							{/*					className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"*/}
+							{/*				>*/}
+							{/*					<span>Upload a file</span>*/}
+							{/*					<input id="file-upload" name="file-upload" type="file"*/}
+							{/*						   className="sr-only"/>*/}
+							{/*				</label>*/}
+							{/*				<p className="pl-1">or drag and drop</p>*/}
+							{/*			</div>*/}
+							{/*			<p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>*/}
+							{/*		</div>*/}
+							{/*	</div>*/}
+							{/*</div>*/}
 						</div>
 					</div>
 
@@ -150,129 +81,55 @@ class Item extends React.Component {
 							receive mail.</p>
 
 						<div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-							<div className="sm:col-span-3">
+							<div className="sm:col-span-2">
 								<label htmlFor="first-name"
 									   className="block text-sm font-medium leading-6 text-gray-900">
-									First name
+									Price
 								</label>
 								<div className="mt-2">
 									<input
-										type="text"
-										name="first-name"
-										id="first-name"
-										autoComplete="given-name"
+										type="number"
+										name="price"
+										id="price"
 										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 									/>
 								</div>
 							</div>
 
-							<div className="sm:col-span-3">
-								<label htmlFor="last-name"
+							<div className="sm:col-span-2">
+								<label htmlFor="color"
 									   className="block text-sm font-medium leading-6 text-gray-900">
-									Last name
+									Color
 								</label>
 								<div className="mt-2">
-									<input
-										type="text"
-										name="last-name"
-										id="last-name"
-										autoComplete="family-name"
-										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-									/>
+									<ColorPicker/>
 								</div>
 							</div>
-
-							<div className="sm:col-span-4">
-								<label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-									Email address
+							<div className="sm:col-span-2">
+								<label htmlFor="size"
+									   className="block text-sm font-medium leading-6 text-gray-900">
+									Size
 								</label>
 								<div className="mt-2">
-									<input
-										id="email"
-										name="email"
-										type="email"
-										autoComplete="email"
-										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-									/>
-								</div>
-							</div>
-
-							<div className="sm:col-span-3">
-								<label htmlFor="country" className="block text-sm font-medium leading-6 text-gray-900">
-									Country
-								</label>
-								<div className="mt-2">
-									<select
-										id="country"
-										name="country"
-										autoComplete="country-name"
-										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-									>
-										<option>United States</option>
-										<option>Canada</option>
-										<option>Mexico</option>
+									<select className="form-select w-full">
+										<option value="" selected>Choose Size</option>
+										<option value="small">Small</option>
+										<option value="normal">Normal</option>
+										<option value="big">Big</option>
 									</select>
 								</div>
 							</div>
-
-							<div className="col-span-full">
-								<label htmlFor="street-address"
+							<div className="sm:col-span-6">
+								<label htmlFor="description"
 									   className="block text-sm font-medium leading-6 text-gray-900">
-									Street address
+									Description
 								</label>
 								<div className="mt-2">
 									<input
-										type="text"
-										name="street-address"
-										id="street-address"
-										autoComplete="street-address"
-										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-									/>
-								</div>
-							</div>
-
-							<div className="sm:col-span-2 sm:col-start-1">
-								<label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-900">
-									City
-								</label>
-								<div className="mt-2">
-									<input
-										type="text"
-										name="city"
-										id="city"
-										autoComplete="address-level2"
-										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-									/>
-								</div>
-							</div>
-
-							<div className="sm:col-span-2">
-								<label htmlFor="region" className="block text-sm font-medium leading-6 text-gray-900">
-									State / Province
-								</label>
-								<div className="mt-2">
-									<input
-										type="text"
-										name="region"
-										id="region"
-										autoComplete="address-level1"
-										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-									/>
-								</div>
-							</div>
-
-							<div className="sm:col-span-2">
-								<label htmlFor="postal-code"
-									   className="block text-sm font-medium leading-6 text-gray-900">
-									ZIP / Postal code
-								</label>
-								<div className="mt-2">
-									<input
-										type="text"
-										name="postal-code"
-										id="postal-code"
-										autoComplete="postal-code"
-										className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+										type="textarea"
+										name="description"
+										id="description"
+										className="rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-300 form-textarea w-1/2 h-32 resize-none writing-direction-rtl text-left overflow-wrap"
 									/>
 								</div>
 							</div>
@@ -291,73 +148,6 @@ class Item extends React.Component {
 					</button>
 				</div>
 			</form>
-
-		// <div className="container mx-auto my-auto large">
-		// 	<form onSubmit={this.handleSubmit}>
-		// 		<div className="input-group mb-3">
-		// 			<div className="input-group-prepend">
-		// 					<span className="input-group-text"
-		// 						  id="basic-addon1">
-		// 						{" "}
-		// 						Author{" "}
-		// 					</span>
-		// 			</div>
-		// 			<input type="text" className="form-control"
-		// 				   placeholder="Name of the Poet/Author"
-		// 				   aria-label="Username"
-		// 				   aria-describedby="basic-addon1"
-		// 				   value={this.state.user} name="user"
-		// 				   onChange={this.handleInput}/>
-		// 		</div>
-		//
-		// 		<div className="input-group mb-3">
-		// 			<div className="input-group-prepend">
-		// 					<span className="input-group-text">
-		// 					Your Quote
-		// 					</span>
-		// 			</div>
-		// 			<textarea className="form-control "
-		// 					  aria-label="With textarea"
-		// 					  placeholder="Tell us what you think of ....."
-		// 					  value={this.state.quote} name="quote"
-		// 					  onChange={this.handleInput}>
-		// 				</textarea>
-		// 		</div>
-		//
-		// 		<button type="submit" className="btn btn-primary mb-5">
-		// 			Submit
-		// 		</button>
-		// 	</form>
-		//
-		// 	<hr
-		// 		style={{
-		// 			color: "#000000",
-		// 			backgroundColor: "#000000",
-		// 			height: 0.5,
-		// 			borderColor: "#000000",
-		// 		}}
-		// 	/>
-		//
-		// 	{this.state.details.map((detail, id) => (
-		// 		<div key={id}>
-		// 			<div className="card shadow-lg">
-		// 				<div className={"bg-" + this.renderSwitch(id % 6) +
-		// 					" card-header"}>Quote {id + 1}</div>
-		// 				<div className="card-body">
-		// 					<blockquote className={"text-" + this.renderSwitch(id % 6) +
-		// 						" blockquote mb-0"}>
-		// 						<h1> {detail.detail} </h1>
-		// 						<footer className="blockquote-footer">
-		// 							{" "}
-		// 							<cite title="Source Title">{detail.name}</cite>
-		// 						</footer>
-		// 					</blockquote>
-		// 				</div>
-		// 			</div>
-		// 			<span className="border border-primary "></span>
-		// 		</div>
-		// 	))}
-		// </div>
 	)
 		;
 	}

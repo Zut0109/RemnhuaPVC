@@ -11,8 +11,11 @@ const Navbar = () => {
 					<NavLink to="/item" activeStyle>
 						Items
 					</NavLink>
-					<NavLink to="/about" activeStyle>
-						About
+					<NavLink to="/itemlist" activeStyle>
+						Items list
+					</NavLink>
+					<NavLink to="/test" activeStyle>
+						Test
 					</NavLink>
 					<NavLink to="/contact" activeStyle>
 						Contact Us

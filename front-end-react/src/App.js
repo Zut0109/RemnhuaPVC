@@ -13,6 +13,8 @@ import Blogs from "./pages/blogs";
 import SignUp from "./pages/signup";
 import Contact from "./pages/contact";
 import Item from "./pages/items";
+import ItemList from "./components/ItemList";
+import Test from "./pages/test";
 
 function App() {
 	return (
@@ -33,7 +35,8 @@ function App() {
 						<Routes>
 							<Route exact path="/" element={<Home/>}/>
 							<Route exact path="/item" element={<Item/>}/>
-							<Route path="/about" element={<About/>}/>
+							<Route path="/itemlist" element={<ItemList/>}/>
+							<Route path="/test" element={<Test/>}/>
 							<Route
 								path="/contact"
 								element={<Contact/>}

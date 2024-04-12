@@ -22,7 +22,7 @@ class ItemListView(APIView):
                   for detail in Item.objects.all()]
         return Response(detail)
     def post(self, request):
-        serializer = UserSerializer(data=request.data)
+        serializer = ItemSerilizer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
