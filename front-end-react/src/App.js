@@ -15,6 +15,7 @@ import Contact from "./pages/contact";
 import Item from "./pages/items";
 import ItemList from "./components/ItemList";
 import Test from "./pages/test";
+import TestUser from "./pages/testUser";
 
 function App() {
 	return (
@@ -36,7 +37,7 @@ function App() {
 							<Route exact path="/" element={<Home/>}/>
 							<Route exact path="/item" element={<Item/>}/>
 							<Route path="/itemlist" element={<ItemList/>}/>
-							<Route path="/test" element={<Test/>}/>
+							<Route path="/test" element={<TestUser/>}/>
 							<Route
 								path="/contact"
 								element={<Contact/>}

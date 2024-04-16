@@ -2,8 +2,7 @@ from django.views.generic import ListView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from my_app.models import User,Role
-from item.serializer import *
+from store.serializer import *
 
 
 # Create your views here.
